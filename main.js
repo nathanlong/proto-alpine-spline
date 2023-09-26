@@ -11,7 +11,7 @@ Alpine.directive("spline", (el) => {
   const paths = [...el.querySelectorAll("path")];
   const noise2D = createNoise2D();
   const points = [];
-  let noiseStep = 0.001;
+  let noiseStep = 0.002;
 
   paths.forEach(() => {
     const point = createPoints();
@@ -30,8 +30,8 @@ Alpine.directive("spline", (el) => {
         const nX = noise(noise2D, point.noiseOffsetX, point.noiseOffsetX);
         const nY = noise(noise2D, point.noiseOffsetY, point.noiseOffsetY);
         // map this noise value to a new value, somewhere between it's original location -20 and it's original location + 20
-        const x = newValue(nX, -1, 1, point.originX - 20, point.originX + 20);
-        const y = newValue(nY, -1, 1, point.originY - 20, point.originY + 20);
+        const x = newValue(nX, -1, 1, point.originX - 10, point.originX + 10);
+        const y = newValue(nY, -1, 1, point.originY - 10, point.originY + 10);
 
         // update the point's current coordinates
         point.x = x;

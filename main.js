@@ -7,6 +7,31 @@ Alpine.directive("uppercase", (el) => {
   el.textContent = el.textContent.toUpperCase();
 });
 
+Alpine.directive("async", (el) => {
+  // console.log(el)
+  let test = el.getAttributeNames();
+  let sorted = [];
+  let excludeList = ["x-async"];
+  let storage = {};
+  test.forEach((attr) => {
+    console.log(attr);
+    if (attr.startsWith("x-") && !attr.includes(excludeList)) {
+      let slice = attr.slice(2);
+      sorted.push(slice);
+    }
+  });
+  console.log(sorted);
+
+  sorted.forEach((component) => {
+    import(`./components/${component}.js`).then((component) => {
+      // Alpine.initTree(el)
+      console.log('loaded a thing', component)
+    })
+  });
+
+
+});
+
 Alpine.directive("spline", (el) => {
   const paths = [...el.querySelectorAll("path")];
   const noise2D = createNoise2D();
@@ -43,7 +68,7 @@ Alpine.directive("spline", (el) => {
       }
     });
 
-    requestAnimationFrame(animate)
+    requestAnimationFrame(animate);
   })();
 });
 

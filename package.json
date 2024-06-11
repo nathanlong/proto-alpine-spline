@@ -9,11 +9,13 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "glob": "^10.3.16",
     "vite": "^4.3.9"
   },
   "dependencies": {
     "@georgedoescode/spline": "^1.0.1",
     "alpinejs": "^3.13.0",
+    "gsap": "^3.12.5",
     "simplex-noise": "^4.0.1"
   }
 }

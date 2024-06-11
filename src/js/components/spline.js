@@ -1,6 +1,5 @@
 import { spline } from "@georgedoescode/spline";
 import { createNoise2D } from "simplex-noise";
-import { gsap } from "gsap";
 
 export default class test {
   constructor(el) {
@@ -11,7 +10,6 @@ export default class test {
     this.noiseStep = 0.002;
     this.pushPoints();
     this.animate();
-    console.log(gsap)
   }
 
   pushPoints() {
